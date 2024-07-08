@@ -1,9 +1,9 @@
-import { Staff } from "./components/staff";
-import { createStaff } from "./components/staff-management";
+import { createStaff } from "./components/staff-management.js";
+import { Staff } from "./model/staff.js";
 
 const formEle = document.getElementById("form");
 
-formEle.addEventListener("submit", (e) => {
+formEle.onsubmit = (e) => {
   e.preventDefault();
 
   const inputEle = document.querySelectorAll("#form input, #form select");
@@ -13,7 +13,7 @@ formEle.addEventListener("submit", (e) => {
   inputEle.forEach((ele) => {
     listStaff[ele.id] = ele.value;
   });
-  // console.log(listStaff);
+  console.log(listStaff);
   const newStaff = new Staff(
     listStaff.maNV,
     listStaff.tenNV,
@@ -21,6 +21,6 @@ formEle.addEventListener("submit", (e) => {
     listStaff.luongCB,
     listStaff.gioLam
   );
-  console.log(newStaff);
+  // console.log(newStaff);
   createStaff(newStaff);
-});
+};
