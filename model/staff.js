@@ -4,6 +4,6 @@ export class Staff {
     this.name = name;
     this.position = position;
     this.salary = salary;
-    this.hour = hour;
+    this.hourOfWord = hour;
   }
 }

@@ -22,15 +22,23 @@ export const renderInformation = () => {
               <td>${item.name}</td>
               <td>${item.position}</td>
               <td>${item.salary}</td>
-              <td>${item}</td>
-              <td>1</td>
+              <td>${TotalSalary(
+                Number(item.salary),
+                Number(item.hourOfWord)
+              )}</td>
+              <td>${item.hourOfWord}</td>
               <td>Nhân viên xuất sắc</td>
-              <td><button class="btn btn-delete">Xóa</button></td>
+              <td><button class="btn btn-delete" onclick='deleteStaff(${
+                item.id
+              })'>Xóa</button></td>
             </tr>
             `;
         })
         .join(" ");
       tbody.innerHTML = content;
+    })
+    .catch((err) => {
+      console.log(err);
     });
 };
 
@@ -42,8 +50,20 @@ export function createStaff(staff) {
     renderInformation();
   });
 }
-function deleteStaff() {}
+const deleteStaff = (id) => {
+  fetchApi(`staff/${id}`, {
+    method: "delete",
+  }).finally(() => {
+    renderInformation();
+  });
+};
 
+window.deleteStaff = deleteStaff;
+
+const TotalSalary = (salary, hourOdWord) => {
+  return salary * hourOdWord;
+};
+window.TotalSalary = TotalSalary;
 document.addEventListener("DOMContentLoaded", () => {
   renderInformation();
 });

@@ -23,4 +23,5 @@ formEle.onsubmit = (e) => {
   );
   // console.log(newStaff);
   createStaff(newStaff);
+  formEle.reset();
 };
