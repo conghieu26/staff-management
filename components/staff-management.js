@@ -9,7 +9,11 @@ export const renderInformation = () => {
   });
   staffPromise
     .then((response) => {
-      return response.json();
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error(response.statusText);
+      }
     })
     .then((response) => {
       console.log(response);
@@ -50,12 +54,31 @@ export function createStaff(staff) {
     renderInformation();
   });
 }
+const toastEle = document.querySelector(".toast");
 const deleteStaff = (id) => {
   fetchApi(`staff/${id}`, {
     method: "delete",
-  }).finally(() => {
-    renderInformation();
-  });
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error(response.statusText);
+      }
+    })
+    .then((response) => {
+      toastEle.classList.add("show");
+      const toastBodyEle = toastEle.querySelector(".toast-body");
+
+      toastBodyEle.innerHTML = `Xoá sinh vien: ${response.name} thành công`;
+
+      setTimeout(() => {
+        toastEle.classList.remove("show");
+      }, 3000);
+    });
+  renderInformation();
+
+  // toastEle.classList.add("show");
 };
 
 window.deleteStaff = deleteStaff;

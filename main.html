@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quản lý nhân viên</title>
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
     />
@@ -17,10 +23,12 @@
         <div class="form-group">
           <label for="maNV">Mã nhân viên</label>
           <input type="text" class="form-control" id="maNV" />
+          <span id="spanMaStaff"></span>
         </div>
         <div class="form-group">
           <label for="tenNV">Tên nhân viên</label>
           <input type="text" class="form-control" id="tenNV" />
+          <span id="spanTenStaff"></span>
         </div>
         <div class="form-group">
           <label for="chucVu">Chức vụ</label>
@@ -29,14 +37,17 @@
             <option value="quanly">Quản lý</option>
             <option value="nhanvien">Nhân viên</option>
           </select>
+          <span id="spanChuVuStaff"></span>
         </div>
         <div class="form-group">
           <label for="luongCB">Lương cơ bản</label>
           <input type="number" class="form-control" id="luongCB" />
+          <span id="spanLuongStaff"></span>
         </div>
         <div class="form-group">
           <label for="gioLam">Số giờ làm trong tháng</label>
           <input type="number" class="form-control" id="gioLam" />
+          <span id="spanTimeStaff"></span>
         </div>
         <button type="submit" class="btn btn-success">Thêm nhân viên</button>
       </form>
@@ -55,6 +66,28 @@
         </thead>
         <tbody id="tbody"></tbody>
       </table>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div
+        id="liveToast"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <strong class="me-auto"></strong>
+          <small>3 seconds</small>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body">Hello, world! This is a toast message.</div>
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
