@@ -16,7 +16,7 @@ export const renderInformation = () => {
       }
     })
     .then((response) => {
-      console.log(response);
+      // console.log(response);
       const tbody = document.getElementById("tbody");
       const content = response
         .map((item) => {
